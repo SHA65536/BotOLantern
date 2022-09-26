@@ -46,3 +46,48 @@ func ToggleLantern(d *BotOLantern, s *discordgo.Session, i *discordgo.Interactio
 		return
 	}
 }
+
+func RestrictChannel(d *BotOLantern, s *discordgo.Session, i *discordgo.InteractionCreate) {
+	if i.Interaction.Member == nil || i.Interaction.Member.Permissions&discordgo.PermissionAdministrator == 0 {
+		s.InteractionRespond(i.Interaction, &discordgo.InteractionResponse{
+			Type: discordgo.InteractionResponseChannelMessageWithSource,
+			Data: &discordgo.InteractionResponseData{
+				Embeds: []*discordgo.MessageEmbed{
+					{
+						Title: "No permission! >:C",
+					},
+				},
+			},
+		})
+		return
+	}
+	d.Guilds.Restricted[i.Interaction.ChannelID] = !d.Guilds.Restricted[i.Interaction.ChannelID]
+	d.UpdateJson()
+	if !d.Guilds.Restricted[i.Interaction.ChannelID] {
+		s.InteractionRespond(i.Interaction, &discordgo.InteractionResponse{
+			Type: discordgo.InteractionResponseChannelMessageWithSource,
+			Data: &discordgo.InteractionResponseData{
+				Embeds: []*discordgo.MessageEmbed{
+					{
+						Title:       "Aye aye captain! I will now spook this channel!",
+						Description: "🎃",
+					},
+				},
+			},
+		})
+		return
+	} else {
+		s.InteractionRespond(i.Interaction, &discordgo.InteractionResponse{
+			Type: discordgo.InteractionResponseChannelMessageWithSource,
+			Data: &discordgo.InteractionResponseData{
+				Embeds: []*discordgo.MessageEmbed{
+					{
+						Title:       "Aye aye captain! No more spook in this channel!",
+						Description: "🎃",
+					},
+				},
+			},
+		})
+		return
+	}
+}

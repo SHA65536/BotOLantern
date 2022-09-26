@@ -9,11 +9,16 @@ var Commands = []*discordgo.ApplicationCommand{
 	},
 	{
 		Name:        "lanterntoggle",
-		Description: "Toggles Jack O' Lantern Reactions",
+		Description: "Toggles Jack O' Lantern Reactions In The Whole Server",
+	},
+	{
+		Name:        "channeltoggle",
+		Description: "Toggles Jack O' Lantern Reactions In This Channel",
 	},
 }
 
 var CommandHandlers = map[string]func(h *BotOLantern, s *discordgo.Session, i *discordgo.InteractionCreate){
 	"ping":          PingCmd,
 	"lanterntoggle": ToggleLantern,
+	"channeltoggle": RestrictChannel,
 }
