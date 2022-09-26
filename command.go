@@ -2,6 +2,8 @@ package botolantern
 
 import "github.com/bwmarrin/discordgo"
 
+var minChance float64 = 0
+
 var Commands = []*discordgo.ApplicationCommand{
 	{
 		Name:        "ping",
@@ -19,6 +21,20 @@ var Commands = []*discordgo.ApplicationCommand{
 		Name:        "personaltoggle",
 		Description: "Toggles Jack O' Lantern Reactions For User",
 	},
+	{
+		Name:        "lanternchance",
+		Description: "Sets lantern chance",
+		Options: []*discordgo.ApplicationCommandOption{
+			{
+				Type:        discordgo.ApplicationCommandOptionInteger,
+				Name:        "chance",
+				Description: "Chance",
+				MinValue:    &minChance,
+				MaxValue:    100,
+				Required:    true,
+			},
+		},
+	},
 }
 
 var CommandHandlers = map[string]func(h *BotOLantern, s *discordgo.Session, i *discordgo.InteractionCreate){
@@ -26,4 +42,5 @@ var CommandHandlers = map[string]func(h *BotOLantern, s *discordgo.Session, i *d
 	"lanterntoggle":  ToggleLantern,
 	"channeltoggle":  RestrictChannel,
 	"personaltoggle": RestrictUser,
+	"lanternchance":  LanternChance,
 }
