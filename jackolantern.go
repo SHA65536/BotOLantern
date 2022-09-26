@@ -7,6 +7,7 @@ func ToggleLantern(d *BotOLantern, s *discordgo.Session, i *discordgo.Interactio
 		s.InteractionRespond(i.Interaction, &discordgo.InteractionResponse{
 			Type: discordgo.InteractionResponseChannelMessageWithSource,
 			Data: &discordgo.InteractionResponseData{
+				Flags: discordgo.MessageFlagsEphemeral,
 				Embeds: []*discordgo.MessageEmbed{
 					{
 						Title: "No permission! >:C",
@@ -23,6 +24,7 @@ func ToggleLantern(d *BotOLantern, s *discordgo.Session, i *discordgo.Interactio
 		s.InteractionRespond(i.Interaction, &discordgo.InteractionResponse{
 			Type: discordgo.InteractionResponseChannelMessageWithSource,
 			Data: &discordgo.InteractionResponseData{
+				Flags: discordgo.MessageFlagsEphemeral,
 				Embeds: []*discordgo.MessageEmbed{
 					{
 						Title:       "Aye aye captain! I will now spook your messages!",
@@ -37,6 +39,7 @@ func ToggleLantern(d *BotOLantern, s *discordgo.Session, i *discordgo.Interactio
 		s.InteractionRespond(i.Interaction, &discordgo.InteractionResponse{
 			Type: discordgo.InteractionResponseChannelMessageWithSource,
 			Data: &discordgo.InteractionResponseData{
+				Flags: discordgo.MessageFlagsEphemeral,
 				Embeds: []*discordgo.MessageEmbed{
 					{
 						Title:       "Aye aye captain! No more spook!",
@@ -55,6 +58,7 @@ func RestrictChannel(d *BotOLantern, s *discordgo.Session, i *discordgo.Interact
 		s.InteractionRespond(i.Interaction, &discordgo.InteractionResponse{
 			Type: discordgo.InteractionResponseChannelMessageWithSource,
 			Data: &discordgo.InteractionResponseData{
+				Flags: discordgo.MessageFlagsEphemeral,
 				Embeds: []*discordgo.MessageEmbed{
 					{
 						Title: "No permission! >:C",
@@ -71,6 +75,7 @@ func RestrictChannel(d *BotOLantern, s *discordgo.Session, i *discordgo.Interact
 		s.InteractionRespond(i.Interaction, &discordgo.InteractionResponse{
 			Type: discordgo.InteractionResponseChannelMessageWithSource,
 			Data: &discordgo.InteractionResponseData{
+				Flags: discordgo.MessageFlagsEphemeral,
 				Embeds: []*discordgo.MessageEmbed{
 					{
 						Title:       "Aye aye captain! I will now spook this channel!",
@@ -85,6 +90,7 @@ func RestrictChannel(d *BotOLantern, s *discordgo.Session, i *discordgo.Interact
 		s.InteractionRespond(i.Interaction, &discordgo.InteractionResponse{
 			Type: discordgo.InteractionResponseChannelMessageWithSource,
 			Data: &discordgo.InteractionResponseData{
+				Flags: discordgo.MessageFlagsEphemeral,
 				Embeds: []*discordgo.MessageEmbed{
 					{
 						Title:       "Aye aye captain! No more spook in this channel!",
