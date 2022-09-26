@@ -19,8 +19,9 @@ type BotOLantern struct {
 }
 
 type GuildStruct struct {
-	Guilds     map[string]bool `json:"guilds"`
-	Restricted map[string]bool `json:"channels"`
+	Guilds map[string]bool `json:"guilds"`
+	Chans  map[string]bool `json:"channels"`
+	Users  map[string]bool `json:"users"`
 }
 
 func MakeHandler(token string) (*BotOLantern, error) {
@@ -30,7 +31,7 @@ func MakeHandler(token string) (*BotOLantern, error) {
 	}
 	handler := &BotOLantern{
 		Session: dg,
-		Guilds:  &GuildStruct{make(map[string]bool), map[string]bool{}},
+		Guilds:  &GuildStruct{map[string]bool{}, map[string]bool{}, map[string]bool{}},
 	}
 	handler.LoadJson()
 	dg.AddHandler(handler.slashHandler)
@@ -73,7 +74,7 @@ func (d *BotOLantern) messageHandler(s *discordgo.Session, m *discordgo.MessageC
 	if m.Author.ID == s.State.User.ID {
 		return
 	}
-	if !d.Guilds.Guilds[m.GuildID] && !d.Guilds.Restricted[m.ChannelID] {
+	if !d.Guilds.Guilds[m.GuildID] && !d.Guilds.Chans[m.ChannelID] && !d.Guilds.Users[m.Author.ID] {
 		err := s.MessageReactionAdd(m.ChannelID, m.Message.ID, "🎃")
 		if err != nil {
 			log.Printf("Error reacting %s", err)
