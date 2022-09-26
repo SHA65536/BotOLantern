@@ -10,6 +10,7 @@ func ToggleLantern(d *BotOLantern, s *discordgo.Session, i *discordgo.Interactio
 				Embeds: []*discordgo.MessageEmbed{
 					{
 						Title: "No permission! >:C",
+						Color: 0xFF0000,
 					},
 				},
 			},
@@ -26,6 +27,7 @@ func ToggleLantern(d *BotOLantern, s *discordgo.Session, i *discordgo.Interactio
 					{
 						Title:       "Aye aye captain! I will now spook your messages!",
 						Description: "🎃",
+						Color:       0x00FF00,
 					},
 				},
 			},
@@ -39,6 +41,7 @@ func ToggleLantern(d *BotOLantern, s *discordgo.Session, i *discordgo.Interactio
 					{
 						Title:       "Aye aye captain! No more spook!",
 						Description: "🎃",
+						Color:       0xFF0000,
 					},
 				},
 			},
@@ -55,6 +58,7 @@ func RestrictChannel(d *BotOLantern, s *discordgo.Session, i *discordgo.Interact
 				Embeds: []*discordgo.MessageEmbed{
 					{
 						Title: "No permission! >:C",
+						Color: 0xFF0000,
 					},
 				},
 			},
@@ -71,6 +75,7 @@ func RestrictChannel(d *BotOLantern, s *discordgo.Session, i *discordgo.Interact
 					{
 						Title:       "Aye aye captain! I will now spook this channel!",
 						Description: "🎃",
+						Color:       0x00FF00,
 					},
 				},
 			},
@@ -84,6 +89,7 @@ func RestrictChannel(d *BotOLantern, s *discordgo.Session, i *discordgo.Interact
 					{
 						Title:       "Aye aye captain! No more spook in this channel!",
 						Description: "🎃",
+						Color:       0xFF0000,
 					},
 				},
 			},
