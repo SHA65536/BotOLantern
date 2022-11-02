@@ -78,7 +78,7 @@ func (d *BotOLantern) messageHandler(s *discordgo.Session, m *discordgo.MessageC
 	if !d.Guilds.Chans[m.ChannelID] && !d.Guilds.Users[m.Author.ID] {
 		chance, ok := d.Guilds.Guilds[m.GuildID]
 		if !ok || (ok && int(chance) > rand.Intn(100)) {
-			err := s.MessageReactionAdd(m.ChannelID, m.Message.ID, "🎃")
+			err := s.MessageReactionAdd(m.ChannelID, m.Message.ID, "☃️")
 			if err != nil {
 				log.Printf("Error reacting %s", err)
 				return
